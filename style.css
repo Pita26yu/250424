@@ -1,0 +1,140 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #fff;
+  color: #000;
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body.glitch-background {
+  background-color: #000; /* 黑色背景 */
+  color: #0f0; /* 螢光綠文字 */
+}
+
+canvas {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1; /* 動畫放在最底層 */
+}
+
+.menu {
+  list-style: none;
+  margin: 0;
+  padding: 10px;
+  display: flex;
+  background-color: #f4f4f4;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2; /* 選單放在最上層 */
+}
+
+.menu li {
+  margin-right: 15px;
+  position: relative;
+}
+
+.menu li a {
+  text-decoration: none;
+  color: #70d6ff; /* 預設文字顏色 */
+  font-weight: bold;
+  font-size: 25px; /* 設置字體大小 */
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: #fff; /* 預設背景色為白色 */
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.menu li a:hover {
+  background-color: #ffd670; /* 滑鼠懸停時背景色 */
+  color: #000; /* 滑鼠懸停時文字顏色 */
+}
+
+.menu li a:active {
+  background-color: #ffd670; /* 按下時背景色 */
+  color: #000; /* 按下時文字顏色 */
+}
+
+.submenu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #f4f4f4;
+  z-index: 3;
+}
+
+.menu li:hover .submenu {
+  display: block;
+}
+
+.submenu li {
+  margin: 0;
+}
+
+.submenu li a {
+  font-size: 20px;
+  padding: 5px 10px;
+}
+
+iframe {
+  display: none; /* 預設隱藏 */
+  position: absolute;
+  top: 50px;
+  left: 10%;
+  width: 80%; /* 寬度為視窗的 80% */
+  height: 80%; /* 高度為視窗的 80% */
+  background-color: rgba(255, 255, 255, 0.1); /* 背景透明度為 0.1 */
+  z-index: 1; /* iframe 放在第二層 */
+  border: none;
+}
+
+#typingEffect {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+  z-index: 2; /* 確保文字在選單和動畫上方 */
+}
+
+.glitch-text {
+  display: inline-block;
+  color: #0f0; /* 螢光綠 */
+  text-shadow: 0 0 5px #0f0, 0 0 10px #0f0, 0 0 20px #0f0;
+  animation: glitch 0.3s infinite;
+}
+
+@keyframes glitch {
+  0% {
+    transform: translate(0, 0);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(2px, -2px);
+  }
+  60% {
+    transform: translate(-2px, -2px);
+  }
+  80% {
+    transform: translate(2px, 2px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}

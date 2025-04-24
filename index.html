@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sketch</title>
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <script src="libraries/p5.min.js"></script>
+    <script src="libraries/p5.sound.min.js"></script>
+
+    <style>
+      #homeContent {
+        display: block; /* 預設顯示首頁內容 */
+        text-align: center;
+        margin-top: 50px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- 選單 -->
+    <ul class="menu">
+      <li><a href="#" onclick="showHome()">首頁☘︎</a></li>
+      <li><a href="#" onclick="showTypingEffect()">自我介紹☘︎</a></li>
+      <li>
+        <a href="#">作品集☘︎</a>
+        <ul class="submenu">
+          <li><a href="#" onclick="showIframe('https://pita26yu.github.io/-/')">✭第一周</a></li>
+          <li><a href="#" onclick="showIframe('https://pita26yu.github.io/413730572.01/')">✭第二周</a></li>
+          <li><a href="#" onclick="showIframe('https://pita26yu.github.io/--12/')">✭第三周</a></li>
+          <li><a href="#" onclick="showIframe('https://pita26yu.github.io/250328/')">✭第四周</a></li>
+        </ul>
+      </li>
+      <li><a href="#">測驗卷☘︎</a></li>
+      <li><a href="#" onclick="showIframe('https://cfchen58.synology.me/%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%882024/A2/week1/20250221_092037.mp4')">教學影片☘︎</a></li>
+    </ul>
+
+    <!-- 首頁內容 -->
+    <div id="homeContent"></div>
+
+    <!-- 顯示文字的容器 -->
+    <div id="typingEffect"></div>
+
+    <!-- iframe -->
+    <iframe id="contentFrame" src="" frameborder="0"></iframe>
+
+    <!-- 動畫 -->
+    <script src="sketch.js"></script>
+    <script>
+      // 顯示首頁內容
+      function showHome() {
+        document.getElementById('homeContent').style.display = 'block';
+        document.getElementById('typingEffect').innerHTML = ''; // 清空文字
+        document.getElementById('contentFrame').style.display = 'none'; // 隱藏 iframe
+      }
+
+      // 隱藏首頁內容
+      function hideHome() {
+        document.getElementById('homeContent').style.display = 'none';
+      }
+
+      // 顯示 iframe 並載入指定的 URL
+      function showIframe(url) {
+        hideHome();
+        const iframe = document.getElementById('contentFrame');
+        iframe.src = url;
+        iframe.style.display = 'block';
+        document.getElementById('typingEffect').innerHTML = ''; // 清空文字
+      }
+
+      // 顯示逐字打字效果
+      function showTypingEffect() {
+        hideHome();
+        const text = "我是張展瑜，教科一A";
+        const typingContainer = document.getElementById('typingEffect');
+        typingContainer.innerHTML = ''; // 清空文字
+        let index = 0;
+
+        function type() {
+          if (index < text.length) {
+            typingContainer.innerHTML += text[index];
+            index++;
+            setTimeout(type, 150); // 每個字的間隔時間
+          }
+        }
+
+        type();
+      }
+    </script>
+  </body>
+</html>
